@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "WebFetch(domain:www.behance.net)",
+      "mcp__claude_ai_Figma__get_design_context",
+      "mcp__claude_ai_Figma__get_metadata",
+      "mcp__claude_ai_Figma__get_screenshot",
+      "Bash(node -e \"const s = require\\('./src/data/stations.json'\\); console.log\\('Total stations:', s.length\\); console.log\\('IDs:', s.map\\(x=>x.id\\).join\\(', '\\)\\)\")",
+      "Bash(node -e \"const s = require\\('./src/data/stations.json'\\); console.log\\('Total stations:', s.length\\)\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\driss\\Desktop\\charge-ma\\src"
+    ]
+  }
+}
