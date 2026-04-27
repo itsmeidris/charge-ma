@@ -1,24 +1,68 @@
 # charge.ma
 
-Trouvez les bornes de recharge VE sur votre itinéraire au Maroc — application React client-side, sans backend.
+Simple web app to help EV drivers in Morocco find charging stations along a trip.
 
-## Lancer le projet
+## What this app does
+
+- Shows Morocco charging stations on an interactive map
+- Helps plan a trip between two points
+- Highlights stations close to your route
+- Lets users check station details and send quick status feedback
+
+## How to launch
+
+1. Install dependencies:
 
 ```bash
-npm install && npm run dev
+npm install
 ```
 
-## Fonctionnement du filtrage par corridor
+2. Start the app:
 
-Quand un itinéraire est calculé via l'API OSRM, la géométrie encodée (polyline) est décodée en liste de points GPS. Pour chaque borne du dataset, on calcule la **distance minimale à n'importe quel segment de la polyline** (formule point-to-segment Haversine). Si cette distance est ≤ 5 km, la borne est considérée "sur le corridor" et apparaît en pleine couleur ; sinon elle est grisée (opacité 0.25) ou masquée. Les bornes sur le corridor sont triées par ordre d'apparition sur la route, avec la distance parcourue depuis le départ.
+```bash
+npm run dev
+```
 
-## Source des données
+3. Open the local URL shown in the terminal (usually `http://localhost:5173`).
 
-Les 25 bornes de `src/data/stations.json` sont basées sur des emplacements réalistes le long des corridors A7 (Casablanca–Marrakech) et A1 (Rabat–Tanger), ainsi que dans les grandes villes marocaines. Les coordonnées s'appuient sur des données OpenChargeMap et des localisations manuelles.
+## How the app works (user flow)
 
-## Limitations connues
+1. **First launch**
+   - Default map mode is **Satellite**.
+   - You can switch map mode anytime (Standard / Satellite / Dark / Topo).
+   - The app remembers your selected map mode for next sessions.
 
-- L'API OSRM démo peut être lente ou indisponible (serveur public, pas de SLA).
-- Les données de bornes sont statiques et semi-fictives — à remplacer par un export OpenChargeMap réel.
-- Pas de géolocalisation utilisateur (position actuelle).
-- Pas de recalcul en temps réel du statut des bornes.
+2. **Allow location (recommended)**
+   - If you allow location access, the map centers on your current position.
+   - If not allowed, it starts from Casablanca by default.
+
+3. **Choose your trip**
+   - You can select **predefined cities** from the start/destination dropdowns.
+   - Or click the pin button and choose start/end points directly on the map.
+
+4. **Display route**
+   - Click `Afficher le trajet` to draw the route.
+   - Route summary and useful travel metrics are shown.
+
+5. **Explore stations**
+   - Charging stations appear on the map.
+   - Click a station marker to open its info card (power, connector, status, address, distance from departure).
+
+6. **Send quick station feedback**
+   - Use `Signaler panne` if a station has issues.
+   - Use `Ca marche` if the station is working.
+   - Feedback is stored locally in your browser for this prototype.
+
+## Data refresh (optional)
+
+If you want to refresh station data:
+
+```bash
+npm run data:refresh
+```
+
+## Notes for review
+
+- This is a prototype focused on route + charging visibility
+- No backend or user account system
+- Station reports are stored locally in the browser

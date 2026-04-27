@@ -12,6 +12,7 @@ import {
 } from '../utils/icons.js';
 import { CITIES } from '../data/cities.js';
 import { VEHICLE_TABLET_MQ } from '../utils/vehicleTablet.js';
+import chauffeurModeIcon from '../assets/icons/chauffeur_mode.svg';
 
 const TILE_LAYERS = {
   Standard:  { url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",                                                attribution: "© OpenStreetMap contributors" },
@@ -166,18 +167,6 @@ export default function Map({
 
   return (
     <div style={{ position: 'relative', height: '100%', width: '100%' }}>
-      {typeof onChauffeurModeToggle === 'function' && (
-        <button
-          type="button"
-          className={`map-chauffeur-mode-btn${chauffeurMode ? ' map-chauffeur-mode-btn--on' : ''}`}
-          onClick={onChauffeurModeToggle}
-          aria-pressed={chauffeurMode}
-          aria-label="Mode chauffeur"
-          title="Agrandit les zones tactiles et active la mise en page conducteur"
-        >
-          Mode chauffeur
-        </button>
-      )}
       {pickingMode && (
         <div className="map-pick-banner">
           <span>
@@ -381,6 +370,38 @@ export default function Map({
           >
             {hoverTooltip}
           </div>
+        )}
+
+        {typeof onChauffeurModeToggle === 'function' && (
+          <button
+            type="button"
+            onClick={onChauffeurModeToggle}
+            onMouseEnter={() => !isMobile && setHoverTooltip('Mode chauffeur')}
+            onMouseLeave={() => setHoverTooltip('')}
+            style={{
+              width: btnH,
+              height: btnH,
+              borderRadius: 8,
+              border: 'none',
+              background: chauffeurMode ? '#efefef' : '#ffffff',
+              cursor: 'pointer',
+              padding: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.25)',
+              flexShrink: 0,
+            }}
+            aria-pressed={chauffeurMode}
+            aria-label="Mode chauffeur"
+            title="Mode chauffeur"
+          >
+            <img
+              src={chauffeurModeIcon}
+              alt=""
+              style={{ width: iconS, height: iconS, display: 'block' }}
+            />
+          </button>
         )}
 
         <button

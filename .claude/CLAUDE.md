@@ -117,6 +117,32 @@ const CITIES = [
 - Handle loading and error states for OSRM fetch (show spinner, show error message)
 - Mobile-first CSS — the app is used on a phone in a car
 
+## Frontend Architecture (React with Flutter-like composition)
+- Use a **widget-first** style for UI composition:
+  - Create reusable base components in `src/components/ui/`
+  - Compose screens from these base components through props only
+- Keep responsibilities split:
+  - `components/` = presentation and interaction
+  - `controllers/` = persistence/adapters (e.g., localStorage wrappers)
+  - `models/` = data hydration/normalization
+  - `utils/` = pure helper functions
+- When duplicate JSX appears 2+ times (buttons, labeled inputs, side toggles, card shells), extract a base widget instead of repeating markup.
+- Avoid moving routing/corridor/reporting logic into UI widgets.
+
+### Reusable UI Widget Rules
+- Base widgets must be:
+  - stateless (or minimally stateful for local view-only behavior)
+  - configurable via props
+  - behavior-preserving (no hidden side effects)
+- Favor explicit props over implicit globals.
+- Keep naming predictable: `BaseButton`, `LabeledSelectField`, `SidebarToggleButton`, etc.
+- New feature UI should be built by composing existing widgets first; add new widget only when needed.
+
+### Environment & Config Rules
+- Keep runtime config in `.env` / `.env.example` with `VITE_` prefixes.
+- Access env values only through `src/config/env.js` (single source of truth).
+- Never commit secrets; `.env` must remain ignored.
+
 ## What NOT to build
 - No backend, no Express, no Node server
 - No user accounts or auth

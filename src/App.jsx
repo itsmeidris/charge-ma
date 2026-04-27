@@ -34,7 +34,7 @@ export default function App() {
   const [mapZoom, setMapZoom] = useState(CASABLANCA.zoom);
   const [userLocation, setUserLocation] = useState(null);
   const [pickingMode, setPickingMode] = useState(null); // null | 'start' | 'end'
-  const [activeLayer, setActiveLayer] = useState(() => loadString(STORAGE_KEYS.mapLayer, 'Standard'));
+  const [activeLayer, setActiveLayer] = useState(() => loadString(STORAGE_KEYS.mapLayer, 'Satellite'));
   const [selectedStationId, setSelectedStationId] = useState(null);
   /** Layout conducteur : gros touchers + `data-vehicle-ui` (avec détection tablette paysage). */
   const [chauffeurMode, setChauffeurMode] = useState(() => loadString(STORAGE_KEYS.chauffeur) === '1');

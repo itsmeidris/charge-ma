@@ -66,11 +66,11 @@ export default function RouteInfoCard({ route, start, end, corridorCount, chauff
   const animBornes = Math.round(corridorCount * anim);
 
   const sections = [
-    { label: 'DEPART STATION',     icon: locationIcon, value: start.name },
-    { label: 'ARRIVAL STATION',    icon: locationIcon, value: end.name },
-    { label: 'NUMBER OF BORNES',   icon: evChargeIcon, value: `${animBornes} Bornes sur le trajet` },
-    { label: 'ESTIMATED DISTANCE', icon: mapIcon,      value: `~ ${animDist} km` },
-    { label: 'ESTIMATED TIME',     icon: timeIcon,     value: `~${formatTime(animSec)}` },
+    { label: 'Station de départ',     icon: locationIcon, value: start.name },
+    { label: 'Station d\'arrivée',    icon: locationIcon, value: end.name },
+    { label: 'Nombre de bornes',   icon: evChargeIcon, value: `${animBornes} Bornes sur le trajet` },
+    { label: 'Distance estimée', icon: mapIcon,      value: `~ ${animDist} km` },
+    { label: 'Temps estimé',     icon: timeIcon,     value: `~${formatTime(animSec)}` },
   ];
 
   const collapseShift = collapsed ? -(cardW - SIDEBAR_PEEK) : 0;

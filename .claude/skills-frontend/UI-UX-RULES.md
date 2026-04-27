@@ -950,3 +950,24 @@ Add to your main CSS file. Override Leaflet's default popup chrome first.
   using the same structure above and bind the button click events after popup opens
 - Do NOT change how the popup is opened/triggered — only its inner content and style
 - The `station.distanceKm` field is only shown if a route is active and the value exists
+
+---
+
+## Widget Composition Standard (Flutter-style in React)
+
+For all new UI work, follow a reusable widget pattern:
+
+- Build and reuse base widgets from `src/components/ui/`:
+  - `BaseButton`
+  - `LabeledSelectField`
+  - `SidebarToggleButton`
+  - and future equivalents for cards/panels/badges
+- If the same JSX pattern appears in multiple places, extract it to a base widget.
+- Configure via props only; do not embed business logic in base widgets.
+- Preserve existing visual behavior and interactions while refactoring.
+
+### Practical Rules
+- Keep container/screen components focused on orchestration.
+- Keep leaf widgets focused on rendering + callbacks.
+- Prefer consistent class naming so CSS remains stable.
+- Do not alter route/filter/report logic during UI refactors.

@@ -14,6 +14,7 @@ dist-ssr
 .env
 .env.*
 !.env.example
+docs/STATION_DATA_MODEL_AND_SCRAPING.md
 
 # Editor directories and files
 .vscode/*
