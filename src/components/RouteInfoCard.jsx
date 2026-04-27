@@ -5,6 +5,7 @@ import locationIcon from '../assets/icons/location.svg';
 import evChargeIcon from '../assets/icons/ev_charge_icon.svg';
 import mapIcon      from '../assets/icons/map_icon.svg';
 import timeIcon     from '../assets/icons/time_icon.svg';
+import SidebarToggleButton from './ui/SidebarToggleButton.jsx';
 
 function formatTime(sec) {
   const h = Math.floor(sec / 3600);
@@ -79,18 +80,12 @@ export default function RouteInfoCard({ route, start, end, corridorCount, chauff
 
   const side = (
     <div className="ric-card__side">
-      <button
-        type="button"
-        className="card-sidebar-toggle"
+      <SidebarToggleButton
+        collapsed={collapsed}
         onClick={() => setCollapsed(c => !c)}
-        title={collapsed ? 'Afficher la fiche trajet' : 'Masquer la fiche trajet'}
-        aria-label={collapsed ? 'Afficher la fiche trajet' : 'Masquer la fiche trajet'}
-        aria-pressed={collapsed}
-      >
-        <span className="card-sidebar-toggle__chev" aria-hidden>
-          {collapsed ? '›' : '‹'}
-        </span>
-      </button>
+        expandedLabel="Masquer la fiche trajet"
+        collapsedLabel="Afficher la fiche trajet"
+      />
     </div>
   );
 

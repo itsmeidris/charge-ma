@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import Map from './components/Map.jsx';
 import RoutePanel from './components/RoutePanel.jsx';
 import RouteInfoCard from './components/RouteInfoCard.jsx';
@@ -9,39 +9,35 @@ import { CITIES } from './data/cities.js';
 import { reverseGeocode } from './utils/reverseGeocode.js';
 import stationsData from './data/stations.json';
 import { VEHICLE_TABLET_MQ } from './utils/vehicleTablet.js';
+import { hydrateStations } from './models/Station.js';
+import {
+  loadJson,
+  loadString,
+  saveJson,
+  saveString,
+  STORAGE_KEYS,
+} from './controllers/storageController.js';
 import './App.css';
 
 const CASABLANCA = { lat: 33.5731, lng: -7.5898, zoom: 12 };
 
 export default function App() {
   const [introComplete, setIntroComplete] = useState(false);
-  const [start, setStart] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('charge-ma-start')) || CITIES[0]; }
-    catch { return CITIES[0]; }
-  });
-  const [end, setEnd] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('charge-ma-end')) || CITIES[1]; }
-    catch { return CITIES[1]; }
-  });
+  const [start, setStart] = useState(() => loadJson(STORAGE_KEYS.start, CITIES[0]));
+  const [end, setEnd] = useState(() => loadJson(STORAGE_KEYS.end, CITIES[1]));
 
-  useEffect(() => { localStorage.setItem('charge-ma-start', JSON.stringify(start)); }, [start]);
-  useEffect(() => { localStorage.setItem('charge-ma-end',   JSON.stringify(end));   }, [end]);
+  useEffect(() => { saveJson(STORAGE_KEYS.start, start); }, [start]);
+  useEffect(() => { saveJson(STORAGE_KEYS.end, end); }, [end]);
   const [showOffCorridor, setShowOffCorridor] = useState(true);
-  const [reports, setReports] = useState(
-    () => JSON.parse(localStorage.getItem('chargeMA_reports') || '{}')
-  );
+  const [reports, setReports] = useState(() => loadJson(STORAGE_KEYS.reports, {}));
   const [mapCenter, setMapCenter] = useState([CASABLANCA.lat, CASABLANCA.lng]);
   const [mapZoom, setMapZoom] = useState(CASABLANCA.zoom);
   const [userLocation, setUserLocation] = useState(null);
   const [pickingMode, setPickingMode] = useState(null); // null | 'start' | 'end'
-  const [activeLayer, setActiveLayer] = useState(
-    () => localStorage.getItem('charge-ma-map-layer') || 'Standard'
-  );
+  const [activeLayer, setActiveLayer] = useState(() => loadString(STORAGE_KEYS.mapLayer, 'Standard'));
   const [selectedStationId, setSelectedStationId] = useState(null);
   /** Layout conducteur : gros touchers + `data-vehicle-ui` (avec détection tablette paysage). */
-  const [chauffeurMode, setChauffeurMode] = useState(
-    () => localStorage.getItem('charge-ma-chauffeur') === '1'
-  );
+  const [chauffeurMode, setChauffeurMode] = useState(() => loadString(STORAGE_KEYS.chauffeur) === '1');
 
   useEffect(() => {
     const mq = window.matchMedia(VEHICLE_TABLET_MQ);
@@ -55,7 +51,7 @@ export default function App() {
   }, [chauffeurMode]);
 
   useEffect(() => {
-    localStorage.setItem('charge-ma-chauffeur', chauffeurMode ? '1' : '0');
+    saveString(STORAGE_KEYS.chauffeur, chauffeurMode ? '1' : '0');
   }, [chauffeurMode]);
 
   function handleStationSelect(id) {
@@ -84,7 +80,7 @@ export default function App() {
 
   function handleLayerChange(layerName) {
     setActiveLayer(layerName);
-    localStorage.setItem('charge-ma-map-layer', layerName);
+    saveString(STORAGE_KEYS.mapLayer, layerName);
   }
 
   useEffect(() => {
@@ -105,7 +101,8 @@ export default function App() {
   }, []);
 
   const { route, loading, error, fetchRoute, clearRoute } = useRoute();
-  const annotatedStations = useStations(stationsData, route);
+  const stations = useMemo(() => hydrateStations(stationsData), []);
+  const annotatedStations = useStations(stations, route);
   const corridorCount = route ? annotatedStations.filter(s => s.onCorridor).length : 0;
 
   const isFirstRender = useRef(true);
@@ -133,7 +130,7 @@ export default function App() {
           ? { ...cur, count: cur.count + 1, timestamps: [...cur.timestamps, Date.now()] }
           : { ...cur, working: cur.working + 1 },
       };
-      localStorage.setItem('chargeMA_reports', JSON.stringify(next));
+      saveJson(STORAGE_KEYS.reports, next);
       return next;
     });
   }

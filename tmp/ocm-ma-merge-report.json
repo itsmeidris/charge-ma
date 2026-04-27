@@ -1,0 +1,248 @@
+{
+  "generated_at": "2026-04-27T00:46:44.046Z",
+  "local_before": 63,
+  "incoming_count": 100,
+  "added_count": 66,
+  "skipped_count": 34,
+  "local_after": 129,
+  "added": [
+    "FastVolt Afriquia Ouad Amlil",
+    "FastVolt Afriquia Berkane",
+    "FastVolt Afriquia Al Hoceima",
+    "kilowatt - Aswak Assalam",
+    "The View AGADIR 100KW",
+    "FastVolt Afriquia Mnasra 2 vers Sud 100 kW",
+    "Tanger Med Port Authority",
+    "Kilowatt.ma - Ikea Tétouane",
+    "FastVolt Afriquia FastVolt Ksar Sghir Tanger Med",
+    "TotalEnergies Chichaoua vers Nord",
+    "Total Energies Sfiha Ajdir El Hoceïma",
+    "Ecolodge la Palmeraie",
+    "TotalEnergies Relais Mazagan",
+    "Kilowatt.ma - Carrefour market Label' Galery Meknes",
+    "Central Commercial Borj Fes",
+    "Kilowatt.ma - Marina Saidia Resorts",
+    "Kilowatt.ma - Town Hall Saidia",
+    "FastVolt Afriquia Lbir Jdid",
+    "FastVolt Marjane California",
+    "FastVolt Afriquia Oasis",
+    "FastVolt Afriquia Golf Tanger",
+    "FastVolt Marjane Tanger",
+    "Afriquia Panoramique FastVolt Parking sous-sol",
+    "FastVolt Place Des Nations Unies Tanger, Somagec",
+    "kilowatt.ma- Selouane Winxo Groupe Aliman",
+    "FastVolt Afriquia Hamza Fes",
+    "FastVolt Afriquia Al Boustane",
+    "FastVolt Socozed Safi",
+    "Winxo Imintanoute",
+    "FastVolt Kia Maroc Succursale Marrakech",
+    "FastVolt Afriquia Bab Al Kelaa Marrakech",
+    "FastVolt Afriquia PLM Beni Mellal",
+    "FastVolt Afriquia Marinasmir",
+    "FastVolt Afriquia Oujda National Gaz",
+    "FastVolt Afriquia Technopole Oujda",
+    "FASVOLT - Afriquia Tanger Zone Franche",
+    "FastVolt Afriquia Mnar",
+    "FastVolt Afriquia Fnideq",
+    "FastVolt Afriquia Kenitra AFZ",
+    "FastVolt - Afriquia MC Village",
+    "FastVolt Fairmont La Marina Rabat-Salé",
+    "[Kilowatt.ma] Carrefour Salé",
+    "Bornes de recharge - Al Akhawayn University - EVC.WATTSC.COM",
+    "Kilowatt.ma Hotel Noon",
+    "Kilowatt.ma Hotel Boarding Dakhla",
+    "Kilowatt.ma Hotel Barbas",
+    "Kilowatt.ma Station SP Azemmour",
+    "Afriquia Tetouan shore",
+    "Afriquia Rabat Al Melia",
+    "Afriquia Marjane Hay Riad",
+    "Station Afriquia Nouasseur",
+    "Kilowatt.ma Complexe Les Palmiers",
+    "Station Afriquia Sidi Bou OTHMAN",
+    "Les Terasses Gourmandes - Kilowatt.ma",
+    "Label Galerie Safi",
+    "Al Mazar Mall",
+    "Kilowatt.ma - Kasbah Sirocco",
+    "Afriquia Tafraouti Ain Sebaa",
+    "Afriquia Centre 65 Marrakech",
+    "Afriquia Miami Fès",
+    "Afriquia Zenata Ikea",
+    "Afriquia Meknes Riad El Menzeh",
+    "TotalEnergies Riviera",
+    "Winxo - Motel budget Safari - Café Restaurant",
+    "Sela Gallery (Ex Label Gallery)",
+    "Afriquia Agadir"
+  ],
+  "skipped": [
+    {
+      "action": "updated",
+      "incoming": "Commune de Fès",
+      "kept_id": "ocm-commune-de-fes"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Parking Marina Shopping",
+      "kept_id": "ocm-fastvolt-parking-marina-shopping"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Afriquia Lissasfa Exit",
+      "kept_id": "ocm-fastvolt-afriquia-lissasfa-exit"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Afriquia ADM Lmintanout",
+      "kept_id": "ocm-311372"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Afriquia ADM Msoun",
+      "kept_id": "ocm-311372"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Afriquia ADM Laayoune",
+      "kept_id": "ocm-311372"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Afriquia Narjiss ADM",
+      "kept_id": "ocm-311372"
+    },
+    {
+      "action": "updated",
+      "incoming": "FastVolt Afriquia Fnideq",
+      "kept_id": "ocm-311306"
+    },
+    {
+      "action": "updated",
+      "incoming": "Tesla Supercharger Agadir",
+      "kept_id": "ocm-tesla-supercharger-agadir"
+    },
+    {
+      "action": "updated",
+      "incoming": "Tesla Supercharger Marrakech",
+      "kept_id": "ocm-tesla-supercharger-marrakech"
+    },
+    {
+      "action": "updated",
+      "incoming": "Tesla Supercharger Casablanca",
+      "kept_id": "ocm-tesla-supercharger-casablanca"
+    },
+    {
+      "action": "updated",
+      "incoming": "Tesla Supercharger Fes",
+      "kept_id": "ocm-tesla-supercharger-fes"
+    },
+    {
+      "action": "updated",
+      "incoming": "Tesla Supercharger Rabat",
+      "kept_id": "ocm-tesla-supercharger-rabat"
+    },
+    {
+      "action": "updated",
+      "incoming": "Tesla Supercharger Tangier Tanger",
+      "kept_id": "ocm-tesla-supercharger-tangier-tanger"
+    },
+    {
+      "action": "updated",
+      "incoming": "Michlifen Ifrane",
+      "kept_id": "ocm-michlifen-ifrane"
+    },
+    {
+      "action": "updated",
+      "incoming": "Fairmont Taghazout",
+      "kept_id": "ocm-fairmont-taghazout"
+    },
+    {
+      "action": "updated",
+      "incoming": "Station Afriquia Taddart",
+      "kept_id": "ocm-station-afriquia-taddart"
+    },
+    {
+      "action": "updated",
+      "incoming": "TotalEnergies Amskroud",
+      "kept_id": "ocm-totalenergies-amskroud"
+    },
+    {
+      "action": "updated",
+      "incoming": "McDonald's de la Corniche",
+      "kept_id": "ocm-mcdonald-s-de-la-corniche"
+    },
+    {
+      "action": "updated",
+      "incoming": "Afriquia Taddart",
+      "kept_id": "ocm-station-afriquia-taddart"
+    },
+    {
+      "action": "updated",
+      "incoming": "Berkane Ville",
+      "kept_id": "ocm-berkane-ville"
+    },
+    {
+      "action": "updated",
+      "incoming": "Morocco Mall",
+      "kept_id": "ocm-morocco-mall"
+    },
+    {
+      "action": "updated",
+      "incoming": "Afriquia Essaouira",
+      "kept_id": "ocm-afriquia-essaouira"
+    },
+    {
+      "action": "updated",
+      "incoming": "Afriquia Boulevard des F.A.R شارع الجيش الملكي",
+      "kept_id": "ocm-afriquia-boulevard-des-f-a-r"
+    },
+    {
+      "action": "updated",
+      "incoming": "Aeropuerto de Melilla",
+      "kept_id": "ocm-aeropuerto-de-melilla"
+    },
+    {
+      "action": "updated",
+      "incoming": "Winxo Oujda",
+      "kept_id": "ocm-winxo-oujda"
+    },
+    {
+      "action": "updated",
+      "incoming": "Apia Restaurant",
+      "kept_id": "ocm-apia-restaurant"
+    },
+    {
+      "action": "updated",
+      "incoming": "Socco Alto",
+      "kept_id": "ocm-socco-alto"
+    },
+    {
+      "action": "updated",
+      "incoming": "Hotel Senator",
+      "kept_id": "ocm-hotel-senator"
+    },
+    {
+      "action": "updated",
+      "incoming": "Hotel Chams",
+      "kept_id": "ocm-hotel-chams"
+    },
+    {
+      "action": "updated",
+      "incoming": "Mall Ibn Batouta",
+      "kept_id": "ocm-311412"
+    },
+    {
+      "action": "updated",
+      "incoming": "TotalEnergies Relais Mazagan",
+      "kept_id": "ocm-311620"
+    },
+    {
+      "action": "updated",
+      "incoming": "Commune de Fès جماعة فاس",
+      "kept_id": "ocm-commune-de-fes"
+    },
+    {
+      "action": "updated",
+      "incoming": "Avenue Allal Ben Abdallah",
+      "kept_id": "fes-1"
+    }
+  ]
+}

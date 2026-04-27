@@ -2,6 +2,9 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { CITIES } from '../data/cities.js';
 import { CARD_DRAG_PEEK, makeClampOffset, SIDEBAR_PEEK } from '../utils/cardDrag.js';
 import CardDragGrip from './CardDragGrip.jsx';
+import BaseButton from './ui/BaseButton.jsx';
+import LabeledSelectField from './ui/LabeledSelectField.jsx';
+import SidebarToggleButton from './ui/SidebarToggleButton.jsx';
 
 export default function RoutePanel({
   start, end, onStart, onEnd,
@@ -11,6 +14,7 @@ export default function RoutePanel({
   showOffCorridor, onToggleOffCorridor,
   chauffeurMode = false,
 }) {
+  const cityOptions = CITIES.map((c) => ({ value: c.name, label: c.name }));
   const panelRef = useRef(null);
   const baseRef = useRef(null);
   const dragRef = useRef(null);
@@ -130,79 +134,63 @@ export default function RoutePanel({
       aria-expanded={!collapsed}
     >
       <div className="route-panel__content">
-        <div className="input-group">
-          <label>Départ</label>
-          <div className="input-with-pin">
-            <select value={start.name} onChange={handleStart} aria-label="Départ">
-              {isCustomStart && <option value={start.name}>{start.name}</option>}
-              {CITIES.map(c => <option key={c.name}>{c.name}</option>)}
-            </select>
-            <button
-              type="button"
-              className={`pin-btn${pickingMode === 'start' ? ' pin-btn--active' : ''}`}
-              onClick={pickingMode === 'start' ? onCancelPick : onPickStart}
-              title={pickingMode === 'start' ? 'Annuler' : 'Choisir sur la carte'}
-              aria-label={pickingMode === 'start' ? 'Annuler' : 'Choisir sur la carte'}
-            >
-              {pickingMode === 'start' ? '✕' : '📍'}
-            </button>
-          </div>
-        </div>
-        <div className="input-group">
-          <label>Destination</label>
-          <div className="input-with-pin">
-            <select value={end.name} onChange={handleEnd} aria-label="Destination">
-              {isCustomEnd && <option value={end.name}>{end.name}</option>}
-              {CITIES.map(c => <option key={c.name}>{c.name}</option>)}
-            </select>
-            <button
-              type="button"
-              className={`pin-btn${pickingMode === 'end' ? ' pin-btn--active' : ''}`}
-              onClick={pickingMode === 'end' ? onCancelPick : onPickEnd}
-              title={pickingMode === 'end' ? 'Annuler' : 'Choisir sur la carte'}
-              aria-label={pickingMode === 'end' ? 'Annuler' : 'Choisir sur la carte'}
-            >
-              {pickingMode === 'end' ? '✕' : '📍'}
-            </button>
-          </div>
-        </div>
+        <LabeledSelectField
+          label="Départ"
+          value={start.name}
+          options={cityOptions}
+          showCustomOption={isCustomStart}
+          customValue={start.name}
+          onChange={handleStart}
+          actionActive={pickingMode === 'start'}
+          actionText={pickingMode === 'start' ? '✕' : '📍'}
+          actionLabel={pickingMode === 'start' ? 'Annuler' : 'Choisir sur la carte'}
+          actionTitle={pickingMode === 'start' ? 'Annuler' : 'Choisir sur la carte'}
+          onActionClick={pickingMode === 'start' ? onCancelPick : onPickStart}
+        />
+        <LabeledSelectField
+          label="Destination"
+          value={end.name}
+          options={cityOptions}
+          showCustomOption={isCustomEnd}
+          customValue={end.name}
+          onChange={handleEnd}
+          actionActive={pickingMode === 'end'}
+          actionText={pickingMode === 'end' ? '✕' : '📍'}
+          actionLabel={pickingMode === 'end' ? 'Annuler' : 'Choisir sur la carte'}
+          actionTitle={pickingMode === 'end' ? 'Annuler' : 'Choisir sur la carte'}
+          onActionClick={pickingMode === 'end' ? onCancelPick : onPickEnd}
+        />
         {route && (
           <label className="toggle-label route-panel__corridor">            
           </label>
         )}
         {error && <div className="route-error">⚠ {error}</div>}
         {route ? (
-          <button className="btn-clear" onClick={onClear} aria-label="Effacer">
+          <BaseButton className="btn-clear" onClick={onClear} aria-label="Effacer">
             ✕ Effacer le trajet
-          </button>
+          </BaseButton>
         ) : (
-          <button
+          <BaseButton
             className="go-btn"
             onClick={onFetch}
             disabled={loading || start.name === end.name}
           >
             {loading ? <span className="spinner" /> : 'Afficher le trajet'}
-          </button>
+          </BaseButton>
         )}
       </div>
       <div className="route-panel__side">
-        <button
-          type="button"
-          className="card-sidebar-toggle"
+        <SidebarToggleButton
+          collapsed={collapsed}
           onClick={() =>
             setCollapsed(c => {
               const next = !c;
               if (next) setOffset({ x: 0, y: 0 });
               return next;
             })}
-          title={collapsed ? 'Afficher le panneau' : 'Masquer le panneau'}
-          aria-label={collapsed ? 'Afficher le panneau' : 'Masquer le panneau'}
-          aria-pressed={collapsed}
-        >
-          <span className="card-sidebar-toggle__chev" aria-hidden>
-            {collapsed ? '›' : '‹'}
-          </span>
-        </button>
+          expandedLabel="Masquer le panneau"
+          collapsedLabel="Afficher le panneau"
+        />
         <CardDragGrip
           label="Déplacer le panneau (poignée seule)"
           {...pointerHandlers}

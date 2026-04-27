@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "data:scrape": "node scripts/scrape-ocm-ma.mjs",
+    "data:normalize": "node scripts/normalize-stations.mjs",
+    "data:merge": "node scripts/merge-stations.mjs",
+    "data:refresh": "npm run data:scrape && npm run data:normalize && npm run data:merge"
   },
   "dependencies": {
     "gsap": "^3.15.0",
