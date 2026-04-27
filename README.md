@@ -6,7 +6,7 @@ Simple web app to help EV drivers in Morocco find charging stations along a trip
 
 - Shows Morocco charging stations on an interactive map
 - Helps plan a trip between two points
-- Highlights stations close to your route
+- Highlights stations close to your route (Within the range of <= 5KM)
 - Lets users check station details and send quick status feedback
 
 ## How to launch
