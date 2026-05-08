@@ -1,5 +1,5 @@
 <img width="1918" height="857" alt="Screenshot 2026-04-30 053906" src="https://github.com/user-attachments/assets/86b581f4-3861-4502-8e42-9e52ff1f91cf" />
-# charge.ma
+# Find EV Charge
 
 A prototype web app that help EV (Electric-Vehicles) drivers in Morocco find charging stations along a trip.
 

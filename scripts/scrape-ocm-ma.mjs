@@ -116,7 +116,7 @@ function extractStationsFromListHtml(html) {
 async function fetchText(url) {
   const res = await fetch(url, {
     headers: {
-      'user-agent': 'charge-ma-prototype-data-refresh/1.0',
+      'user-agent': 'find-ev-charge-prototype-data-refresh/1.0',
       accept: 'text/html,application/json;q=0.9,*/*;q=0.8',
     },
   });

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { decodePolyline } from '../utils/polyline.js';
 
 const OSRM_BASE  = 'https://router.project-osrm.org/route/v1/driving';
-const CACHE_KEY  = 'charge-ma-route';
+const CACHE_KEY  = 'find-ev-charge-route';
 
 function loadCached() {
   try { return JSON.parse(localStorage.getItem(CACHE_KEY)) || null; }

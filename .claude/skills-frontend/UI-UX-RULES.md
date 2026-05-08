@@ -542,11 +542,11 @@ Do not add a popup or any click handler to this marker.
 2. PERSIST SELECTED MAP LAYER (localStorage)
 When the user switches tile layer, save it to localStorage.
 On page load, read from localStorage and restore the saved layer as the active basemap.
-Key: 'charge-ma-map-layer'
+Key: 'find-ev-charging-map-layer'
 Values: 'Standard' | 'Satellite' | 'Dark' | 'Topo'
 Default if not set: 'Standard'
 Implementation — create a controlled layer state:
-jsxconst LAYER_STORAGE_KEY = 'charge-ma-map-layer';
+jsxconst LAYER_STORAGE_KEY = 'find-ev-charging-map-layer';
 
 // Read saved layer on mount
 const [activeLayer, setActiveLayer] = useState(
@@ -623,7 +623,7 @@ Pass activeLayer to route Polyline → switch color reactively
 
 Geolocation fetch logic (just replace the marker icon)
 OSRM fetch / polyline decode / corridor filter
-localStorage keys used for breakdown reports (use a different key: 'charge-ma-map-layer')
+localStorage keys used for breakdown reports (use a different key: 'find-ev-charging-map-layer')
 Any existing marker click handlers or popup content
 
 ---

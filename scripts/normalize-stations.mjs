@@ -112,7 +112,7 @@ async function geocodeQuery(q) {
   const url = `https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&q=${encodeURIComponent(q)}`;
   const res = await fetch(url, {
     headers: {
-      'user-agent': 'charge-ma-prototype-normalizer/1.0',
+      'user-agent': 'find-ev-charge-prototype-normalizer/1.0',
       accept: 'application/json',
     },
   });

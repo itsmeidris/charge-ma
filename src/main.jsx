@@ -6,7 +6,7 @@ import App from './App.jsx'
 import env from './config/env.js'
 
 if (import.meta.env.DEV) {
-  console.info('[charge-ma] runtime env', env)
+  console.info('[find-ev-charge] runtime env', env)
 }
 
 createRoot(document.getElementById('root')).render(

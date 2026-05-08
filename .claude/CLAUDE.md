@@ -15,7 +15,7 @@ You are building **charge.ma**, a client-side React prototype for finding EV cha
 
 ## Project Structure
 ```
-charge-ma/
+find-ev-charge/
 ├── public/
 ├── .claude/
 ├──├── skills-frontend/          #UI/UX Design Rules

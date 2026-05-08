@@ -1,9 +1,9 @@
 export const STORAGE_KEYS = {
-  start: 'charge-ma-start',
-  end: 'charge-ma-end',
+  start: 'find-ev-charge-start',
+  end: 'find-ev-charge-end',
   reports: 'chargeMA_reports',
-  mapLayer: 'charge-ma-map-layer',
-  chauffeur: 'charge-ma-chauffeur',
+  mapLayer: 'find-ev-charging-map-layer',
+  chauffeur: 'find-ev-charge-chauffeur',
 };
 
 export function loadJson(key, fallback) {
