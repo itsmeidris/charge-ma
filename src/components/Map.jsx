@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { MapContainer, TileLayer, Polyline, Marker, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, useMap, useMapEvents } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import AnimatedRoutePolyline from './AnimatedRoutePolyline.jsx';
 import StationMarker from './StationMarker.jsx';
 import {
   userLocationIcon,
@@ -31,17 +33,35 @@ const LAYER_OPTIONS = [
 
 function MapController({ route, mapCenter, mapZoom }) {
   const map = useMap();
+  const routeKeyRef = useRef(null);
 
   useEffect(() => {
+    if (route?.polyline?.length) return;
     if (mapCenter) {
       map.setView(mapCenter, mapZoom);
     }
-  }, [mapCenter, mapZoom, map]);
+  }, [mapCenter, mapZoom, map, route]);
 
   useEffect(() => {
-    if (route && route.polyline.length > 0) {
-      map.fitBounds(route.polyline, { padding: [50, 50] });
+    if (!route?.polyline?.length) return;
+
+    const key = `${route.distance}-${route.duration}-${route.polyline.length}`;
+    if (routeKeyRef.current === key) return;
+    routeKeyRef.current = key;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bounds = L.latLngBounds(route.polyline);
+
+    if (reduced) {
+      map.fitBounds(bounds, { padding: [50, 50] });
+      return;
     }
+
+    map.flyToBounds(bounds, {
+      padding: [50, 50],
+      duration: 1.35,
+      easeLinearity: 0.22,
+    });
   }, [route, map]);
 
   return null;
@@ -189,7 +209,7 @@ export default function Map({
         <MapBackgroundDeselect pickingMode={pickingMode} onMapBackgroundClick={onMapBackgroundClick} />
         <CursorController pickingMode={pickingMode} />
         {route && (
-          <Polyline
+          <AnimatedRoutePolyline
             positions={route.polyline}
             color={routeColor}
             weight={5}

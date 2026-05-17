@@ -138,7 +138,7 @@ export default function App() {
   return (
     <>
       {!introComplete && <IntroScreen onComplete={() => setIntroComplete(true)} />}
-      <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.6s ease' }}>
+      <div className={introComplete ? 'app-shell app-shell--visible' : 'app-shell'}>
         <div className={`app${activeLayer === 'Dark' ? ' app--dark' : ''}`}>
           <RoutePanel
             start={start}
